@@ -1,0 +1,297 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Aion2 슈고와 아이들 Raid Builder</title><style>
+:root{--bg:#080d16;--panel:#101827;--panel2:#151f32;--line:#2b3954;--text:#eef3ff;--muted:#91a0ba;--accent:#6f9cff;--tank:#62b5ff;--support:#70dfac;--dps:#d7a4ff;--danger:#ff7e8d;--main:#4f8cff;--potato:#8f3f5b}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -20%,#203760 0,#0a101b 43%,#060a11 100%);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif;min-height:100vh}.app{max-width:1500px;margin:auto;padding:26px}.top{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:18px}.brand h1{margin:0;font-size:29px;letter-spacing:.08em}.brand p{margin:7px 0 0;color:var(--muted)}button,input,select{font:inherit}button{border:1px solid var(--line);background:#17233a;color:#eef3ff;border-radius:9px;padding:9px 12px;font-weight:700;cursor:pointer}button:hover{background:#213251}.primary{background:#315fae;border-color:#4e7ed0}.layout{display:grid;grid-template-columns:340px 1fr;gap:18px}.panel{background:rgba(15,23,38,.94);border:1px solid var(--line);border-radius:15px;box-shadow:0 15px 45px #0005}.sidebar{padding:15px}.panel-title{font-size:12px;letter-spacing:.12em;color:#b7c5df;font-weight:900;margin:0 0 11px}.addbox{padding:12px;border:1px solid #2b3954;border-radius:12px;background:#0d1524;margin-bottom:14px}.field{margin:8px 0}.field label{display:block;color:var(--muted);font-size:11px;margin-bottom:5px}.field input,.field select,.role-select{width:100%;background:#111b2c;color:#eef3ff;border:1px solid #344563;border-radius:8px;padding:8px;outline:none}.row{display:grid;grid-template-columns:1fr 110px;gap:8px}.addbtn{width:100%;margin-top:6px}.member{padding:9px 10px;border:1px solid #31405d;border-radius:9px;background:#172238;margin:7px 0;cursor:grab;display:flex;align-items:center;justify-content:space-between;gap:8px}.member.tank{border-left:4px solid var(--tank)}.member.support{border-left:4px solid var(--support)}.member.dps{border-left:4px solid var(--dps)}.member small{color:var(--muted)}.member-actions{display:flex;align-items:center;gap:6px}.role-label{display:inline-flex;align-items:center;gap:5px}.role-dot{width:8px;height:8px;border-radius:50%;display:inline-block}.role-dot.tank{background:var(--tank)}.role-dot.support{background:var(--support)}.role-dot.dps{background:var(--dps)}.type-badge{font-size:9px;font-weight:900;letter-spacing:.05em;border-radius:999px;padding:3px 6px;color:#fff}.type-badge.main{background:var(--main)}.type-badge.potato{background:var(--potato)}.x{border:0;background:transparent;color:#7586a3;padding:2px 4px;font-size:16px}.x:hover{background:transparent;color:var(--danger)}.sets{display:grid;gap:18px}.set{padding:15px}.set-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px}.set-actions{display:flex;gap:7px}.add-set{border-style:dashed}.delete-set{font-size:10px;padding:6px 9px;color:#ff9eaa}.set-name{font-size:18px;font-weight:900;letter-spacing:.08em}.set-desc{font-size:11px;color:var(--muted)}.parties{display:grid;grid-template-columns:1fr 1fr;gap:13px}.party{border:1px solid #2b3954;border-radius:12px;background:#0d1524;padding:11px}.party-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.party h3{font-size:14px;margin:0}.copyroles{font-size:10px;padding:5px 7px;color:#aebddd}.slot{min-height:55px;border:1px dashed #3a4b69;border-radius:9px;margin:7px 0;padding:6px;display:grid;grid-template-columns:104px 1fr;align-items:center;gap:7px;background:#111b2c}.slot.over{outline:2px solid #719cf0}.role-select{font-size:10px;font-weight:900;letter-spacing:.04em;padding:7px 5px}.role-select.tank{color:var(--tank)}.role-select.support{color:var(--support)}.role-select.dps{color:var(--dps)}.slot .member{margin:0;padding:7px 8px}.empty{color:#64738e;font-size:11px}#bench{min-height:70px;border:1px dashed transparent;border-radius:10px;padding:2px;transition:.15s}#bench.over{border-color:#719cf0;background:#111b2c}.legend{display:flex;gap:11px;flex-wrap:wrap;color:var(--muted);font-size:11px;margin-top:11px}.dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:4px}.modal-backdrop{position:fixed;inset:0;background:#000a;display:none;align-items:center;justify-content:center;z-index:9999}.modal-backdrop.show{display:flex}.modal{width:min(420px,calc(100% - 32px));background:#101827;border:1px solid #3b4b69;border-radius:14px;padding:20px;box-shadow:0 24px 80px #000a}.modal h3{margin:0 0 8px}.modal p{margin:0;color:var(--muted);line-height:1.55}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.danger-btn{background:#8f3341;border-color:#bd5262}.danger-btn:hover{background:#aa3c4c}.auth-badge{display:inline-flex;align-items:center;padding:7px 10px;border:1px solid var(--line);border-radius:999px;color:#9fb0ca;font-size:11px;font-weight:900;margin-right:5px}.login-btn-small{padding:5px 9px;font-size:11px;border-radius:7px}.login-status{display:inline-flex;align-items:center;gap:5px;color:#91a0ba;font-size:10px;font-weight:800;white-space:nowrap}.login-status strong{color:#eef3ff;font-size:11px;letter-spacing:.04em}.hidden{display:none!important}.footer{text-align:center;color:#6d7d98;font-size:11px;margin-top:14px}.top>div:last-child{width:100%;flex-wrap:nowrap!important;gap:6px!important}.top>div:last-child button{padding:7px 10px;font-size:12px;border-radius:7px;white-space:nowrap}.top>div:last-child .login-btn-small{padding:5px 8px;font-size:10px;margin-left:auto}.top>div:last-child .login-status{margin-left:auto}.top>div:last-child .login-status+.login-btn-small{margin-left:0}@media(max-width:950px){.layout{grid-template-columns:1fr}.parties{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}.top>div:last-child{width:100%;overflow-x:auto}}
+</style></head><body><div class="app"><div class="top"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span id="modeBadge" class="auth-badge">👀 MEMBER</span><div class="brand"><h1>Aion2 슈고와 아이들 Raid Builder <small style="font-size:11px;color:#7285a5">v0.9.2</small></h1></div></div><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end"><button id="staffPwBtn" class="hidden" onclick="openStaffPassword()">🔑 Staff 비밀번호 변경</button> <button id="loadLatestBtn" type="button">최신 공대 불러오기</button> <button class="edit-only hidden" onclick="clearPlacements()">배치 초기화</button> <button class="primary edit-only hidden" onclick="autoBuild()">자동 세팅</button> <button class="primary edit-only hidden" onclick="saveToGoogle()">공대 저장</button> <span id="loginStatus" class="login-status">현재 로그인: <strong>MEMBER</strong></span><button id="loginBtn" class="login-btn-small" onclick="openLogin()">🔒 로그인</button></div></div><div class="layout"><aside class="panel sidebar"><div class="panel-title">ADD MEMBER</div><div id="addMemberBox" class="addbox hidden"><div class="field"><label>유저 이름</label><input id="name" placeholder="예: 루루피"></div><div class="row"><div class="field"><label>직업</label><select id="className" onchange="syncRoleFromClass()"><option value="">직업 선택</option><option value="검성">검성</option><option value="수호성">수호성</option><option value="살성">살성</option><option value="궁성">궁성</option><option value="권성">권성</option><option value="마도성">마도성</option><option value="정령성">정령성</option><option value="치유성">치유성</option></select></div><div class="field"><label>역할</label><select id="role"><option value="tank">TANK</option><option value="support">SUPPORT</option><option value="dps" selected>DPS</option></select></div></div><div class="field"><label>Type</label><select id="memberType"><option value="main" selected>Main</option><option value="potato">Potato</option></select></div><button class="primary addbtn" onclick="addMember()">+ 공대원 추가</button></div><div class="panel-title">WAITING LIST <span id="count" style="float:right;color:#70819d"></span></div><div id="bench"></div><div class="legend"><span><i class="dot" style="background:var(--tank)"></i>TANK</span><span><i class="dot" style="background:var(--support)"></i>SUPPORT</span><span><i class="dot" style="background:var(--dps)"></i>DPS</span></div></aside><main class="sets" id="sets"></main></div><div class="footer"><span id="syncStatus">Google Sheet 연결 준비 중...</span><br>각 슬롯의 역할을 TANK / SUPPORT / DPS 중 직접 선택할 수 있습니다. 공대원은 드래그해서 배치하세요.</div></div><div id="deleteModal" class="modal-backdrop" role="dialog" aria-modal="true"><div class="modal"><h3>공대원 삭제</h3><p id="deleteMessage"></p><div class="modal-actions"><button type="button" id="cancelDelete">취소</button><button type="button" id="confirmDelete" class="danger-btn">삭제</button></div></div></div><div id="loginModal" class="modal-backdrop" role="dialog" aria-modal="true"><div class="modal"><h3>🔒 Master / Staff 로그인</h3><p>Master 또는 Staff 비밀번호를 입력하세요.</p><div class="field" style="margin-top:14px"><input id="loginPassword" type="password" placeholder="비밀번호" autocomplete="current-password"></div><div id="loginError" style="min-height:18px;color:#ff9eaa;font-size:11px;margin-top:7px"></div><div class="modal-actions"><button type="button" onclick="closeLogin()">취소</button><button type="button" class="primary" onclick="doLogin()">로그인</button></div></div></div><div id="staffPwModal" class="modal-backdrop" role="dialog" aria-modal="true"><div class="modal"><h3>🔑 Staff 비밀번호 변경</h3><p>MASTER만 Staff 비밀번호를 변경할 수 있습니다.</p><div class="field" style="margin-top:14px"><label>새 Staff 비밀번호</label><input id="newStaffPw" type="password" placeholder="6자 이상" autocomplete="new-password"></div><div class="field"><label>새 비밀번호 확인</label><input id="confirmStaffPw" type="password" placeholder="한 번 더 입력" autocomplete="new-password"></div><div id="staffPwError" style="min-height:18px;color:#ff9eaa;font-size:11px;margin-top:7px"></div><div class="modal-actions"><button type="button" onclick="closeStaffPassword()">취소</button><button type="button" class="primary" onclick="changeStaffPassword()">변경</button></div></div></div><script>
+const API_URL='https://script.google.com/macros/s/AKfycby-91rGDwGNf58FsebTTMAIwQag4MUUhvUNbd4LWRwqTV8L6RM3_cvQfxFWxsTTITbR4w/exec';
+let members=[];
+let placements={};
+let dragId=null;
+let nextId=1;
+let pendingDeleteId=null;
+let userRole='member';
+let authToken='';
+const roles={tank:'TANK',support:'SUPPORT',dps:'DPS'};
+let slotRoles={};
+let sets=[{id:1,parties:[1,2]},{id:2,parties:[3,4]}];
+let nextSetId=3;
+let nextPartyId=5;
+
+function defaultPartyRoles(p){['tank','support','dps','dps','dps'].forEach((r,i)=>{const k=`p${p}s${i}`;if(!slotRoles[k])slotRoles[k]=r})}
+[1,2,3,4].forEach(defaultPartyRoles);
+
+function apiRoleToLocal(r){r=String(r||'DPS').toLowerCase();return r==='tank'?'tank':r==='support'?'support':'dps'}
+function apiTypeToLocal(t){return String(t||'Main').toLowerCase()==='potato'?'potato':'main'}
+function setSyncStatus(t){const el=document.getElementById('syncStatus');if(el)el.textContent=t}
+
+function canEdit(){return userRole==='master'||userRole==='staff'}
+function updateAuthUI(){
+  const editable=canEdit();
+  document.getElementById('modeBadge').textContent=userRole==='master'?'👑 MASTER':userRole==='staff'?'🔓 STAFF':'👀 MEMBER';
+  const roleText=userRole==='master'?'MASTER':userRole==='staff'?'STAFF':'MEMBER';
+  document.getElementById('loginStatus').innerHTML=`현재 로그인: <strong>${roleText}</strong>`;
+  document.getElementById('loginBtn').textContent=editable?'로그아웃':'🔒 로그인';
+  document.getElementById('staffPwBtn').classList.toggle('hidden',userRole!=='master');
+  document.getElementById('addMemberBox').classList.toggle('hidden',!editable);
+  document.querySelectorAll('.edit-only').forEach(el=>el.classList.toggle('hidden',!editable));
+  const loadLatestBtn=document.getElementById('loadLatestBtn');
+  if(loadLatestBtn){
+    loadLatestBtn.disabled=!editable;
+    loadLatestBtn.title=editable?'':'MASTER 또는 STAFF만 사용할 수 있습니다.';
+  }
+}
+function openLogin(){
+  if(canEdit()){logout();return}
+  document.getElementById('loginPassword').value='';
+  document.getElementById('loginError').textContent='';
+  document.getElementById('loginModal').classList.add('show');
+  setTimeout(()=>document.getElementById('loginPassword').focus(),30);
+}
+function closeLogin(){document.getElementById('loginModal').classList.remove('show')}
+async function doLogin(){
+  const password=document.getElementById('loginPassword').value;
+  if(!password)return;
+  const err=document.getElementById('loginError');err.textContent='확인 중...';
+  try{
+    const res=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'login',password})});
+    const data=await res.json();
+    if(!data.success||!data.token)throw new Error(data.error||'로그인 실패');
+    userRole=data.role==='master'?'master':'staff';authToken=data.token;
+    sessionStorage.setItem('raidRole',userRole);sessionStorage.setItem('raidToken',authToken);
+    closeLogin();buildShell();render();updateAuthUI();
+  }catch(e){err.textContent=e.message||'로그인 실패'}
+}
+function logout(){
+  userRole='member';authToken='';
+  sessionStorage.removeItem('raidRole');sessionStorage.removeItem('raidToken');
+  buildShell();render();updateAuthUI();
+}
+async function restoreSession(){
+  const token=sessionStorage.getItem('raidToken')||'';
+  if(!token){updateAuthUI();return}
+  try{
+    const res=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'checkSession',token})});
+    const data=await res.json();
+    if(!data.success)throw new Error();
+    authToken=token;userRole=data.role==='master'?'master':'staff';
+  }catch(e){authToken='';userRole='member';sessionStorage.removeItem('raidRole');sessionStorage.removeItem('raidToken')}
+  buildShell();render();updateAuthUI();
+}
+function openStaffPassword(){
+  if(userRole!=='master')return;
+  document.getElementById('newStaffPw').value='';document.getElementById('confirmStaffPw').value='';
+  document.getElementById('staffPwError').textContent='';document.getElementById('staffPwModal').classList.add('show');
+}
+function closeStaffPassword(){document.getElementById('staffPwModal').classList.remove('show')}
+async function changeStaffPassword(){
+  if(userRole!=='master')return;
+  const p=document.getElementById('newStaffPw').value,c=document.getElementById('confirmStaffPw').value,err=document.getElementById('staffPwError');
+  if(p.length<6){err.textContent='6자 이상 입력해 주세요.';return}
+  if(p!==c){err.textContent='비밀번호가 일치하지 않습니다.';return}
+  err.textContent='변경 중...';
+  try{
+    const res=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'changeStaffPassword',token:authToken,newPassword:p})});
+    const data=await res.json();if(!data.success)throw new Error(data.error||'변경 실패');
+    closeStaffPassword();alert('Staff 비밀번호가 변경되었습니다.');
+  }catch(e){err.textContent=e.message||'변경 실패'}
+}
+function requireEdit(){if(canEdit())return true;alert('MASTER 또는 STAFF만 수정할 수 있습니다.');return false}
+
+async function loadFromGoogle(manual=false){
+  const btn=document.getElementById('loadLatestBtn');
+  if(btn&&manual){btn.disabled=true;btn.textContent='불러오는 중...';}
+  setSyncStatus('Google Sheet에서 불러오는 중...');
+  try{
+    const res=await fetch(API_URL+'?action=getData&ts='+Date.now(),{cache:'no-store'});
+    const data=await res.json(); if(!data.success)throw new Error(data.error||'불러오기 실패');
+
+    members=(data.members||[])
+      .filter(x=>String(x.active||'YES').toUpperCase()!=='NO')
+      .map((x,i)=>({id:i+1,n:String(x.name||''),c:String(x.className||''),r:apiRoleToLocal(x.role),t:apiTypeToLocal(x.type||x.memberType)}))
+      .filter(x=>x.n);
+
+    nextId=members.length?Math.max(...members.map(x=>x.id))+1:1;
+    placements={};
+
+    const raid=data.raid||[];
+    const grouped={};
+    raid.forEach(x=>{
+      const p=+x.party, s=+x.slot-1;
+      if(!p||s<0)return;
+      const setId=+x.set||1;
+      (grouped[setId]||(grouped[setId]=new Set())).add(p);
+      const k=`p${p}s${s}`;
+      slotRoles[k]=apiRoleToLocal(x.role);
+      if(x.player){
+        const m=members.find(mm=>mm.n===String(x.player));
+        if(m)placements[k]=m.id;
+      }
+    });
+
+    if(Object.keys(grouped).length){
+      sets=Object.keys(grouped).map(Number).sort((a,b)=>a-b).map(id=>({id,parties:[...grouped[id]].sort((a,b)=>a-b)}));
+      nextSetId=Math.max(...sets.map(s=>s.id))+1;
+      const allParties=sets.flatMap(s=>s.parties);
+      nextPartyId=allParties.length?Math.max(...allParties)+1:1;
+    }
+    sets.flatMap(s=>s.parties).forEach(defaultPartyRoles);
+    buildShell();render();setSyncStatus('✓ Google Sheet 최신 데이터 불러옴 · '+new Date().toLocaleTimeString());
+  }catch(e){
+    console.error(e);
+    setSyncStatus('⚠ Google Sheet 불러오기 실패: '+e.message);
+    if(manual)alert('최신 공대를 불러오지 못했습니다.\n'+e.message);
+  }finally{
+    if(btn&&manual){btn.disabled=false;btn.textContent='최신 공대 불러오기';}
+  }
+}
+
+async function saveToGoogle(){if(!requireEdit())return;
+  setSyncStatus('Google Sheet에 저장 중...');
+  const memberData=members.map(m=>({name:m.n,className:m.c,role:roles[m.r],type:m.t==='potato'?'Potato':'Main',memberType:m.t==='potato'?'Potato':'Main',active:'YES'}));
+  const raid=[];
+  sets.forEach(set=>set.parties.forEach(p=>{
+    for(let i=0;i<5;i++){
+      const k=`p${p}s${i}`,m=members.find(x=>x.id===placements[k]);
+      raid.push({set:set.id,party:p,slot:i+1,role:roles[slotRoles[k]||'dps'],player:m?m.n:'',className:m?m.c:'',type:m?(m.t==='potato'?'Potato':'Main'):''});
+    }
+  }));
+  try{
+    const res=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'saveAll',token:authToken,members:memberData,raid})});
+    const data=await res.json();if(!data.success)throw new Error(data.error||'저장 실패');
+    setSyncStatus('✓ Google Sheet 저장 완료 · '+new Date().toLocaleString());
+  }catch(e){console.error(e);setSyncStatus('⚠ 저장 실패: '+e.message);alert('Google Sheet 저장에 실패했습니다.\n'+e.message)}
+}
+
+function memberHTML(m){
+  const type=m.t==='potato'?'potato':'main';
+  const typeText=type==='potato'?'POTATO':'MAIN';
+  return `<div class="member ${m.r}" draggable="${canEdit()?'true':'false'}" data-id="${m.id}">
+    <div><b>${esc(m.n)}</b><br><small>${esc(m.c)}</small></div>
+    <div class="member-actions">
+      <small class="role-label"><i class="role-dot ${m.r}"></i>${roles[m.r]}</small>
+      <span class="type-badge ${type}">${typeText}</span>
+      ${canEdit()?`<button type="button" class="x" draggable="false" data-remove-id="${m.id}" title="삭제">×</button>`:''}
+    </div>
+  </div>`;
+}
+function esc(s){return String(s).replace(/[&<>"']/g,a=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[a]))}
+function roleOptions(key){return Object.entries(roles).map(([v,t])=>`<option value="${v}" ${slotRoles[key]===v?'selected':''}>${t}</option>`).join('')}
+
+function buildShell(){
+  const host=document.getElementById('sets');
+  host.innerHTML=sets.map(set=>`<section class="panel set">
+    <div class="set-head">
+      <div><div class="set-name">SET ${set.id}</div><div class="set-desc">${set.parties.map(p=>'PARTY '+p).join(' + ')}</div></div>
+      <div class="set-actions">${canEdit()?`<button class="delete-set" onclick="deleteSet(${set.id})">SET 삭제</button>`:''}</div>
+    </div>
+    <div class="parties">${set.parties.map(p=>partyHTML(p)).join('')}</div>
+  </section>`).join('') + (canEdit()?`<button class="add-set" onclick="addSet()">+ Add Set</button>`:'');
+}
+
+function partyHTML(p){
+  defaultPartyRoles(p);
+  return `<div class="party"><div class="party-head"><h3>PARTY ${p}</h3>${canEdit()?`<button class="copyroles" onclick="applyPartyRoles(${p})">이 구성 전체 적용</button>`:''}</div>
+    ${[0,1,2,3,4].map(i=>{let k=`p${p}s${i}`;return `<div class="slot" data-slot="${k}"><select class="role-select ${slotRoles[k]}" ${canEdit()?`onchange="changeRole(\'${k}\',this.value)"`:'disabled'}>${roleOptions(k)}</select><div class="slot-content"></div></div>`}).join('')}
+  </div>`;
+}
+
+function render(){
+  const used=new Set(Object.values(placements));
+  const waiting=members.filter(m=>!used.has(m.id));
+  document.getElementById('count').textContent=`${waiting.length}명`;
+  document.getElementById('bench').innerHTML=waiting.map(memberHTML).join('')||'<div class="empty">대기 인원 없음</div>';
+  document.querySelectorAll('.slot').forEach(sl=>{
+    let k=sl.dataset.slot,m=members.find(x=>x.id===placements[k]),sel=sl.querySelector('select');
+    sel.className=`role-select ${slotRoles[k]}`;sel.value=slotRoles[k];
+    sl.querySelector('.slot-content').innerHTML=m?memberHTML(m):'<span class="empty">Drop member here</span>';
+  });
+  bind();
+}
+
+function bind(){
+  if(!canEdit())return;
+  document.querySelectorAll('.x').forEach(btn=>{
+    btn.onpointerdown=e=>e.stopPropagation();
+    btn.onclick=e=>{e.preventDefault();e.stopPropagation();removeMember(+btn.dataset.removeId)};
+  });
+  document.querySelectorAll('.member').forEach(el=>el.addEventListener('dragstart',e=>{
+    if(e.target.closest('.x')){e.preventDefault();return} dragId=+el.dataset.id;
+  }));
+  document.querySelectorAll('.slot').forEach(sl=>{
+    sl.ondragover=e=>{e.preventDefault();sl.classList.add('over')};
+    sl.ondragleave=()=>sl.classList.remove('over');
+    sl.ondrop=e=>{
+      e.preventDefault();sl.classList.remove('over');
+      let m=members.find(x=>x.id===dragId),k=sl.dataset.slot;if(!m)return;
+      if(m.r!==slotRoles[k]){alert(`${roles[slotRoles[k]]} 슬롯에는 ${roles[slotRoles[k]]} 역할의 공대원만 배치할 수 있습니다.`);return}
+      Object.keys(placements).forEach(x=>{if(placements[x]===m.id)delete placements[x]});
+      placements[k]=m.id;dragId=null;render();
+    };
+  });
+
+  const bench=document.getElementById('bench');
+  bench.ondragover=e=>{e.preventDefault();bench.classList.add('over')};
+  bench.ondragleave=e=>{if(!bench.contains(e.relatedTarget))bench.classList.remove('over')};
+  bench.ondrop=e=>{
+    e.preventDefault();bench.classList.remove('over');
+    if(dragId===null)return;
+    Object.keys(placements).forEach(k=>{if(placements[k]===dragId)delete placements[k]});
+    dragId=null;render();
+  };
+}
+
+function syncRoleFromClass(){
+  const c=document.getElementById('className').value;
+  const roleMap={'수호성':'tank','치유성':'support'};
+  document.getElementById('role').value=roleMap[c]||'dps';
+}
+
+function addMember(){if(!requireEdit())return;
+  let n=document.getElementById('name').value.trim(),
+      c=document.getElementById('className').value.trim(),
+      r=document.getElementById('role').value,
+      t=document.getElementById('memberType').value;
+  if(!n||!c){alert('유저 이름과 직업을 입력해 주세요.');return}
+  members.push({id:nextId++,n,c,r,t});
+  document.getElementById('name').value='';
+  document.getElementById('className').value='';
+  document.getElementById('role').value='dps';
+  render();
+}
+
+function addSet(){if(!requireEdit())return;
+  const parties=[nextPartyId++,nextPartyId++];
+  parties.forEach(defaultPartyRoles);
+  sets.push({id:nextSetId++,parties});
+  buildShell();render();
+}
+
+function deleteSet(id){if(!requireEdit())return;
+  const set=sets.find(s=>s.id===id);if(!set)return;
+  const occupied=set.parties.some(p=>[0,1,2,3,4].some(i=>placements[`p${p}s${i}`]));
+  const msg=occupied?`SET ${id} 안에 배치된 공대원이 있습니다. 삭제하면 모두 Waiting List로 이동합니다. 삭제하시겠습니까?`:`SET ${id}을 삭제하시겠습니까?`;
+  if(!confirm(msg))return;
+  set.parties.forEach(p=>[0,1,2,3,4].forEach(i=>{delete placements[`p${p}s${i}`];delete slotRoles[`p${p}s${i}`]}));
+  sets=sets.filter(s=>s.id!==id);
+  buildShell();render();
+}
+
+function removeMember(id){if(!requireEdit())return;const m=members.find(x=>x.id===id);if(!m)return;pendingDeleteId=id;document.getElementById('deleteMessage').textContent=`정말 ${m.n} 공대원을 삭제하시겠습니까?`;document.getElementById('deleteModal').classList.add('show')}
+function closeDeleteModal(){pendingDeleteId=null;document.getElementById('deleteModal').classList.remove('show')}
+function confirmDeleteMember(){if(pendingDeleteId===null)return;const id=pendingDeleteId;members=members.filter(m=>m.id!==id);Object.keys(placements).forEach(k=>{if(placements[k]===id)delete placements[k]});closeDeleteModal();render()}
+function changeRole(k,r){if(!requireEdit())return;slotRoles[k]=r;if(placements[k]){let m=members.find(x=>x.id===placements[k]);if(m&&m.r!==r)delete placements[k]}render()}
+function applyPartyRoles(p){if(!requireEdit())return;let src=[0,1,2,3,4].map(i=>slotRoles[`p${p}s${i}`]);sets.flatMap(s=>s.parties).forEach(party=>src.forEach((r,i)=>{let k=`p${party}s${i}`;slotRoles[k]=r;if(placements[k]){let m=members.find(x=>x.id===placements[k]);if(m&&m.r!==r)delete placements[k]}}));buildShell();render()}
+function autoBuild(){if(!requireEdit())return;placements={};let pools={tank:members.filter(x=>x.r==='tank'),support:members.filter(x=>x.r==='support'),dps:members.filter(x=>x.r==='dps')};let idx={tank:0,support:0,dps:0};sets.flatMap(s=>s.parties).forEach(p=>{for(let i=0;i<5;i++){let k=`p${p}s${i}`,r=slotRoles[k],m=pools[r][idx[r]++];if(m)placements[k]=m.id}});render()}
+function clearPlacements(){if(!requireEdit())return;placements={};render()}
+
+document.getElementById('loadLatestBtn').addEventListener('click',()=>{
+  if(!requireEdit())return;
+  loadFromGoogle(true);
+});
+document.getElementById('cancelDelete').onclick=closeDeleteModal;
+document.getElementById('confirmDelete').onclick=confirmDeleteMember;
+document.getElementById('deleteModal').onclick=e=>{if(e.target.id==='deleteModal')closeDeleteModal()};
+document.getElementById('loginModal').onclick=e=>{if(e.target.id==='loginModal')closeLogin()};
+document.getElementById('staffPwModal').onclick=e=>{if(e.target.id==='staffPwModal')closeStaffPassword()};
+document.getElementById('loginPassword').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeDeleteModal();closeLogin();closeStaffPassword()}if(e.key==='Enter'&&document.activeElement.id==='name'&&canEdit())addMember()});
+buildShell();render();updateAuthUI();restoreSession();loadFromGoogle();
+</script></body></html>
